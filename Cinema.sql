@@ -1,0 +1,123 @@
+CREATE DATABASE Cinema;
+USE Cinema;
+
+CREATE TABLE ATOR(
+    CodAtor VARCHAR(3) PRIMARY KEY,
+    NomeArtistico VARCHAR(40) NOT NULL,
+    NomeReal VARCHAR(40) NOT NULL,
+    Nacionalidade VARCHAR(20) NOT NULL,
+    Sexo CHAR(1) NOT NULL,
+    Idade INT(2) NOT NULL,
+    IndicacaoOscar INT(2),
+    Oscar INT(2)
+);
+
+CREATE TABLE FILME(
+    CodFilme VARCHAR(3) PRIMARY KEY,
+    NomeFilme VARCHAR(40) NOT NULL,
+    AnoFilme INT(4) NOT NULL,
+    Orçamento INT(15) NOT NULL,
+    Tempo INT(2) NOT NULL
+);
+
+CREATE TABLE PERSONAGEM(
+    CodFilme VARCHAR(3) NOT NULL,
+    CodAtor VARCHAR(3) NOT NULL,
+    Personagem VARCHAR(40) NOT NULL,
+    Cache INT(15) NOT NULL,
+
+        PRIMARY KEY(CodFilme, CodAtor),
+        FOREIGN KEY (CodFilme) REFERENCES FILME(CodFilme) ON DELETE CASCADE ON UPDATE CASCADE,
+        FOREIGN KEY (CodAtor) REFERENCES ATOR(CodAtor) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+INSERT INTO ATOR VALUES ('a1', 'Demi Moore', 'Maria da Silva', 'USA', 'F', 32, NULL, NULL);
+INSERT INTO ATOR VALUES ('a10', 'Willian Hurt', 'Willian Ernst Hurt', 'USA', 'M', 45, 2, 1);
+INSERT INTO ATOR VALUES ('a11', 'George Clooney', 'George Costa Smith', 'USA', 'M', 37, 1, NULL);
+INSERT INTO ATOR VALUES ('a12', 'Jennifer Lopez', 'Maria Conchita Lopez', 'México', 'F', 32, NULL, NULL);
+INSERT INTO ATOR VALUES ('a13', 'Antony Hopkins', 'Antony Richard Hopcroft', 'USA', 'M', 65, 6, 3);
+INSERT INTO ATOR VALUES ('a14', 'Antônio Banderas', 'Antônio Augusto Banderas', 'Espanha', 'M', 34, NULL, NULL);
+INSERT INTO ATOR VALUES ('a15', 'Tom Hanks', 'Antony Hanks', 'USA', 'M', 45, 1, 1);
+INSERT INTO ATOR VALUES ('a16', 'Matt Damon', 'Mattew Louis Damon', 'USA', 'M', 32, 1, 1);
+INSERT INTO ATOR VALUES ('a17', 'Jim Carrey', 'James Carrey', 'USA', 'M', 40, NULL, NULL);
+INSERT INTO ATOR VALUES ('a18', 'Nicole Kidman', 'Susan West', 'Austrália', 'F', 33, NULL, NULL);
+INSERT INTO ATOR VALUES ('a19', 'Val Kilmer', 'Valerio Soza Kilmer', 'Porto Rico', 'M', 40, NULL, NULL);
+INSERT INTO ATOR VALUES ('a2', 'Brad Pitt', 'João Paulo', 'USA', 'M', 28, 1, NULL);
+INSERT INTO ATOR VALUES ('a20', 'Cameron Diaz', 'Esperanza Diaz', 'Costa Rica', 'F', 29, NULL, NULL);
+INSERT INTO ATOR VALUES ('a21', 'Holly Hunter', 'Susan Richards', 'USA', 'F', 33, 1, 1);
+INSERT INTO ATOR VALUES ('a22', 'Richard Gere', 'Richard Gere', 'USA', 'M', 34, NULL, NULL);
+INSERT INTO ATOR VALUES ('a3', 'Jessica Lange', 'Jessica Lange', 'USA', 'F', 42, 4, 2);
+INSERT INTO ATOR VALUES ('a4', 'Dustin Hoffman', 'Dustin Hoffman', 'USA', 'M', 36, 2, NULL);
+INSERT INTO ATOR VALUES ('a5', 'Sônia Braga', 'Sônia Braga', 'Brasil', 'F', 45, NULL, NULL);
+INSERT INTO ATOR VALUES ('a6', 'Samuel Jackson', 'Samuel L. Jackson', 'USA', 'M', 60, NULL, NULL);
+INSERT INTO ATOR VALUES ('a7', 'Sandra Bullock', 'Sandra Bullock', 'USA', 'F', 30, 2, NULL);
+INSERT INTO ATOR VALUES ('a8', 'Harry Cornick Jr.', 'Harry Cornick Jr.', 'USA', 'M', 40, NULL, NULL);
+INSERT INTO ATOR VALUES ('a9', 'Wesley Snipes', 'Wesley Snipes', 'USA', 'M', 31, 1, NULL);
+
+INSERT INTO FILME VALUES ('f1', 'A Jurada', 1996, 1000000, 18);
+INSERT INTO FILME VALUES ('f10', 'Cidade das Sombras', 1997, 10000000, 7);
+INSERT INTO FILME VALUES ('f11', 'Irresistível Paixão', 1998, 10000000, 10);
+INSERT INTO FILME VALUES ('f12', 'A Máscara do Zorro', 1998, 11000000, 11);
+INSERT INTO FILME VALUES ('f13', 'Quem vai ficar com Marry ?', 1997, 6000000, 8);
+INSERT INTO FILME VALUES ('f14', 'O Resgate do Soldado Ryan', 1997, 10000000, 7);
+INSERT INTO FILME VALUES ('f15', 'O Show de Truman', 1998, 10000000, 14);
+INSERT INTO FILME VALUES ('f16', 'Batman, o Filme', 1995, 10000000, 9);
+INSERT INTO FILME VALUES ('f17', 'Filadélfia', 1996, 10000000, 6);
+INSERT INTO FILME VALUES ('f18', 'O Máscara', 1995, 6000000, 7);
+INSERT INTO FILME VALUES ('f19', 'O Beijo da Mulher Aranha', 1990, 8000000, 24);
+INSERT INTO FILME VALUES ('f2', 'A Letra Escarlate', 1995, 10000000, 24);
+INSERT INTO FILME VALUES ('f20', 'O Pacificador', 1997, 10000000, 15);
+INSERT INTO FILME VALUES ('f21', 'Ace Ventura', 1995, 7000000, 12);
+INSERT INTO FILME VALUES ('f22', 'Chaplin', 1993, 8000000, 14);
+INSERT INTO FILME VALUES ('f23', 'Batman e Robin', 1997, 10000000, 20);
+INSERT INTO FILME VALUES ('f24', 'Strip Tease', 1996, 7000000, 12);
+INSERT INTO FILME VALUES ('f25', 'Passageiro 57', 1993, 200000000, 15);
+INSERT INTO FILME VALUES ('f26', 'Forrest Gump', 1996, 90000000, 15);
+INSERT INTO FILME VALUES ('f3', 'Seven', 1995, 15000000, 20);
+INSERT INTO FILME VALUES ('f4', 'Tootsie', 1982, 5000000, 16);
+INSERT INTO FILME VALUES ('f5', 'Tieta', 1995, 2000000, 18);
+INSERT INTO FILME VALUES ('f6', 'Código de Violência', 1997, 10000000, 15);
+INSERT INTO FILME VALUES ('f7', 'Quando o Amor Acontece', 1998, 5000000, 12);
+INSERT INTO FILME VALUES ('f8', 'A Vingança de Bette', 1998, 10000000, 9);
+INSERT INTO FILME VALUES ('f9', 'Blade, o Caçador de Vampiros', 1998, 100000000, 18);
+
+INSERT INTO PERSONAGEM VALUES ('f1', 'a1', 'Mary', 30000);
+INSERT INTO PERSONAGEM VALUES ('f10', 'a10', 'Columbo', 3000000);
+INSERT INTO PERSONAGEM VALUES ('f11', 'a11', 'Johnny', 8000000);
+INSERT INTO PERSONAGEM VALUES ('f11', 'a12', 'Holly', 1000000);
+INSERT INTO PERSONAGEM VALUES ('f12', 'a13', 'Diego', 5000000);
+INSERT INTO PERSONAGEM VALUES ('f12', 'a14', 'Pancho', 8000000);
+INSERT INTO PERSONAGEM VALUES ('f13', 'a16', 'Roger', 4000000);
+INSERT INTO PERSONAGEM VALUES ('f13', 'a20', 'Mary', 5000000);
+INSERT INTO PERSONAGEM VALUES ('f14', 'a15', 'Roberts', 10000000);
+INSERT INTO PERSONAGEM VALUES ('f14', 'a16', 'Edward', 2000000);
+INSERT INTO PERSONAGEM VALUES ('f15', 'a17', 'Truman', 12000000);
+INSERT INTO PERSONAGEM VALUES ('f16', 'a17', 'Charade', 5000000);
+INSERT INTO PERSONAGEM VALUES ('f16', 'a18', 'Betty', 7000000);
+INSERT INTO PERSONAGEM VALUES ('f16', 'a19', 'Bruce', 8000000);
+INSERT INTO PERSONAGEM VALUES ('f17', 'a14', 'Bobby', 4000000);
+INSERT INTO PERSONAGEM VALUES ('f17', 'a15', 'Bill', 6000000);
+INSERT INTO PERSONAGEM VALUES ('f18', 'a17', 'Mascara', 10000000);
+INSERT INTO PERSONAGEM VALUES ('f18', 'a21', 'Sammy', 2000000);
+INSERT INTO PERSONAGEM VALUES ('f19', 'a10', 'Molina', 2000000);
+INSERT INTO PERSONAGEM VALUES ('f19', 'a5', 'Aranha', 80000);
+INSERT INTO PERSONAGEM VALUES ('f2', 'a1', 'Sandy', 50000);
+INSERT INTO PERSONAGEM VALUES ('f20', 'a11', 'George', 14000000);
+INSERT INTO PERSONAGEM VALUES ('f20', 'a18', 'Mary', 5000000);
+INSERT INTO PERSONAGEM VALUES ('f21', 'a17', 'Ace', 6000000);
+INSERT INTO PERSONAGEM VALUES ('f21', 'a21', 'Lola', 1000000);
+INSERT INTO PERSONAGEM VALUES ('f22', 'a8', 'Chaplin', 3000000);
+INSERT INTO PERSONAGEM VALUES ('f23', 'a11', 'Bruce', 10000000);
+INSERT INTO PERSONAGEM VALUES ('f24', 'a1', 'Annie', 18000000);
+INSERT INTO PERSONAGEM VALUES ('f25', 'a9', 'James', 14000000);
+INSERT INTO PERSONAGEM VALUES ('f26', 'a15', 'Forrest', 20000000);
+INSERT INTO PERSONAGEM VALUES ('f3', 'a2', 'John', 50000);
+INSERT INTO PERSONAGEM VALUES ('f4', 'a3', 'Mary', 1000000);
+INSERT INTO PERSONAGEM VALUES ('f4', 'a4', 'Tootsie', 2000000);
+INSERT INTO PERSONAGEM VALUES ('f5', 'a10', 'Nacib', 2500000);
+INSERT INTO PERSONAGEM VALUES ('f5', 'a5', 'Tieta', 50000);
+INSERT INTO PERSONAGEM VALUES ('f6', 'a6', 'Robinson', 3000000);
+INSERT INTO PERSONAGEM VALUES ('f7', 'a7', 'Suzy', 3000000);
+INSERT INTO PERSONAGEM VALUES ('f7', 'a8', 'Bill', 5000000);
+INSERT INTO PERSONAGEM VALUES ('f8', 'a3', 'Bette', 3000000);
+INSERT INTO PERSONAGEM VALUES ('f9', 'a9', 'Blade', 100000000);
